@@ -546,7 +546,10 @@ endif()
 #
 # Compile tools / tests / benchmarks
 #
-add_subdirectory(tests)
+option(SIMDJSON_BUILD_TESTS "Build the tests (only in developer mode)" ON)
+if(SIMDJSON_BUILD_TESTS)
+  add_subdirectory(tests)
+endif()
 add_subdirectory(examples)
 if(CMAKE_SIZEOF_VOID_P EQUAL 8) # we only include the benchmarks on 64-bit systems.
   add_subdirectory(benchmark)
